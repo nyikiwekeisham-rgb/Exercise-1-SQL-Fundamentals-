@@ -49,11 +49,11 @@ END AS priority_label
 FROM tickets;
 
 SELECT student_id,
-(days_present * 100.0 / total_days) AS attendance_percentage,
+days_attendence,
 CASE
-    WHEN (days_present * 100.0 / total_days) >= 90 THEN 'Excellent'
-    WHEN (days_present * 100.0 / total_days) BETWEEN 75 AND 89 THEN 'Good'
-    ELSE 'Needs Improvement'
+    WHEN days_attendence >= 90 THEN 'Excellent'
+    WHEN days_attendence BETWEEN 75 AND 89 THEN 'Good'
+    WHEN days_attendence ,<75 'Needs Improvement'
 END AS attendance_status
 FROM attendance;
 
