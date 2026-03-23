@@ -1,26 +1,26 @@
-SELECT e.EmployeeID, e.FirstName, e.LastName, e.Department, e.Salary,
-       p.ProjectID, p.ProjectName, p.Budget, p.Status
-FROM Employees e
-INNER JOIN Projects p
-ON e.EmployeeID = p.EmployeeID;
+SELECT EmployeeID, FirstName, LastName, Department, Salary,
+       ProjectID, ProjectName, Budget, Status
+FROM Employees As A
+INNER JOIN Projects As B
+ON A.EmployeeID = B.EmployeeID;
 
-SELECT e.EmployeeID, e.FirstName, e.LastName, e.Department, e.Salary,
-       p.ProjectID, p.ProjectName, p.Budget, p.Status
-FROM Employees e
-LEFT JOIN Projects p
-ON e.EmployeeID = p.EmployeeID;
+SELECT EmployeeID, FirstName, LastName, Department, Salary,
+       ProjectID, ProjectName, Budget, Status
+FROM Employees As A
+LEFT JOIN Projects As B
+ON A.EmployeeID = B.EmployeeID;
 
-SELECT p.ProjectID, p.ProjectName, p.Budget, p.Status,
-       e.EmployeeID, e.FirstName, e.LastName, e.Department, e.Salary
-FROM Employees e
-RIGHT JOIN Projects p
-ON e.EmployeeID = p.EmployeeID;
+SELECT ProjectID, ProjectName, Budget, Status,
+       EmployeeID, FirstName, LastName, Department, Salary
+FROM Employees As A
+RIGHT JOIN Projects As B
+ON EmployeeID = EmployeeID;
 
-SELECT e.EmployeeID, e.FirstName, e.LastName, e.Department, e.Salary,
-       p.ProjectID, p.ProjectName, p.Budget, p.Status
-FROM Employees e
-FULL OUTER JOIN Projects p
-ON e.EmployeeID = p.EmployeeID;
+SELECT EmployeeID, FirstName, LastName, Department, Salary,
+       ProjectID, ProjectName, Budget, Status
+FROM Employees As A
+FULL OUTER JOIN Projects As B
+ON A.EmployeeID = B.EmployeeID;
 
 SELECT City AS Location FROM Employees
 UNION
@@ -72,10 +72,10 @@ FROM Projects
 GROUP BY Status
 HAVING COUNT(ProjectID) >= 2;
 
-SELECT e.EmployeeID, e.FirstName, e.LastName,
-       SUM(p.Budget) AS TotalProjectBudget
-FROM Employees e
-JOIN Projects p
-ON e.EmployeeID = p.EmployeeID
-GROUP BY e.EmployeeID, e.FirstName, e.LastName
-HAVING SUM(p.Budget) > 150000;
+SELECT EmployeeID, FirstName, LastName,
+       SUM(Budget) AS TotalProjectBudget
+FROM Employees As A
+JOIN Projects As B
+ON A.EmployeeID = B.EmployeeID
+GROUP BY EmployeeID, FirstName, LastName
+HAVING SUM(Budget) > 150000;
